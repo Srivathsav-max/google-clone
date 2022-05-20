@@ -21,25 +21,21 @@ export const Results = () => {
   
   if(isLoading) return <Loading />
 
+  
+
   switch (location.pathname) {
     
     case '/search':
       return (
-        <div className='flex flex-wrap justify-between space-y-6 sm:px-56'>
-          {
-            results?.map(({link , title},index) => (
-              <div key={index} className='md:w-2/5 w-full'>
-                  <a href={link} target='_blank' rel='noreferrer'>
-                    <p className='text-sm'>
-                      {link.length > 30 ? link.substring(0, 30): link}
-                    </p>
-                    <p className='text-lg hover:underline dark:text-blue-300 text-blue-700'>
-                      {title}
-                    </p>
-                  </a>
-              </div>
-            ))
-          }
+        <div className="sm:px-56 flex flex-wrap justify-between space-y-6">
+          {results?.map(({ link, title }, index) => (
+            <div key={index} className="md:w-2/5 w-full">
+              <a href={link} target="_blank" rel="noreferrer">
+                <p className="text-sm">{link.length > 30 ? link.substring(0, 30) : link}</p>
+                <p className="text-lg hover:underline dark:text-blue-300 text-blue-700  ">{title}</p>
+              </a>
+            </div>
+          ))}
         </div>
       )
 
@@ -48,7 +44,7 @@ export const Results = () => {
         <div className="flex flex-wrap ">
           {results?.map((video, index) => (
             <div key={index} className="p-2">
-              <ReactPlayer url={video.additional_links?.[0].href} controls width="355px" height="200px" />
+              {video?.additional_links?.[0]?.href} && <ReactPlayer url={video.additional_links?.[0].href} controls width="355px" height="200px"/>
             </div>
           ))}
         </div>

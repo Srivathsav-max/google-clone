@@ -14,10 +14,12 @@ export const StateContextProvider = ({ children }) => {
     const res = await fetch(`${baseUrl}${url}`, { // fetching the results from the api using the url
       method: 'GET',
       headers: {
+        'x-user-agent': 'desktops',
         'x-rapidapi-host': 'google-search3.p.rapidapi.com',
         'x-rapidapi-key': '20cac57a71mshc04fb0ca18a5a76p14f4a6jsn1981a6c6939e',
       },
     });
+
 
     const data = await res.json();
 

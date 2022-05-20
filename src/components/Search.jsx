@@ -6,8 +6,9 @@ import { Links } from './Links';
 
 export const Search = () => {
   const { setSearchTerm } = useStateContext();
-  const [text, setText] = useState('Srivathsav-max');
+  const [text, setText] = useState('');
   const [debouncedValue] = useDebounce(text, 300);
+
 
   useEffect(() => {
     if (debouncedValue) setSearchTerm(debouncedValue);
